@@ -128,20 +128,21 @@ public abstract class ChessGamePiece implements Serializable {
         int numMoves ){
         List<String> moves = new ArrayList<>();
         int count = 0;
-        if ( isPieceOnScreen() ){
-            for ( int i = pieceRow + 1; i < 8 && count < numMoves; i++ ){
-                if ( ( board.getCell( i, pieceColumn ).getPieceOnSquare()
-                    == null || isEnemy( board, i, pieceColumn ) ) ){
-                    moves.add( i + "," + pieceColumn );
+        if ( isPieceOnScreen() ) {
+            for (int i = pieceRow + 1; i < 8 && count < numMoves; i++) {
+                ChessGamePiece currentPiece = board.getCell(i, pieceColumn).getPieceOnSquare();
+                boolean currPieceIsEnemy = isEnemy(board, i, pieceColumn);
+
+                // add if the square is empty or there is a enemy piece
+                if (currentPiece == null || currPieceIsEnemy) {
+                    moves.add(i + "," + pieceColumn);
                     count++;
-                    if ( isEnemy( board, i, pieceColumn ) ){
-                        break;
-                    }
                 }
-                else
-                {
+                // stop when there is a piece
+                if (currentPiece != null) {
                     break;
                 }
+
             }
         }
         return moves;
@@ -441,15 +442,7 @@ public abstract class ChessGamePiece implements Serializable {
         }
     }
     // ----------------------------------------------------------
-    /**
-     * Checks if this piece's current location is in bounds. This prevents users
-     * from trying to move pieces out of the graveyard.
-     *
-     * @return true if in bounds, false otherwise
-     */
-    public boolean isPieceOnScreen(){
-        return isOnScreen( pieceRow, pieceColumn );
-    }
+
     /**
      * Update this piece's position.
      *
@@ -643,53 +636,7 @@ public abstract class ChessGamePiece implements Serializable {
         }
         return false;
     }
-    // ----------------------------------------------------------
-    /**
-     * Determines if the row and column contains an enemy piece. This is defined
-     * in GamePiece and not game.ChessGameBoard because different pieces have
-     * different enemies depending on their colors.
-     *
-     * @param row
-     *            row of the GamePiece
-     * @param col
-     *            column of the GamePiece
-     * @param board
-     *            the board to check
-     * @return true if it is an enemy piece, false if not
-     */
-    public boolean isEnemy( ChessGameBoard board, int row, int col ){
-        if ( row > 7 || col > 7 || row < 0 || col < 0 ){
-            return false;
-        }
-        ChessGamePiece enemyPiece =
-            board.getCell( row, col ).getPieceOnSquare() == null
-                ? null
-                : board.getCell( row, col ).getPieceOnSquare();
-        if ( enemyPiece == null
-            || this.getColorOfPiece() == PieceColorEnum.UNASSIGNED
-            || enemyPiece.getColorOfPiece() == PieceColorEnum.UNASSIGNED ){
-            return false;
-        }
-        if ( this.getColorOfPiece() == PieceColorEnum.WHITE ){
-            if ( enemyPiece.getColorOfPiece() == PieceColorEnum.BLACK ){
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        else
-        {
-            if ( enemyPiece.getColorOfPiece() == PieceColorEnum.WHITE ){
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-    }
+
     // ----------------------------------------------------------
     /**
      * Gets a list of GamePieces that can currently attack this game piece.
@@ -729,5 +676,31 @@ public abstract class ChessGamePiece implements Serializable {
     public String toString(){
         return this.getClass().toString().substring( 6 ) + " @ (" + pieceRow
             + ", " + pieceColumn + ")";
+    }
+
+    public boolean isEnemy( ChessGameBoard board, int row, int col ){
+        if ( row > 7 || col > 7 || row < 0 || col < 0 ){
+            return false;
+        }
+        ChessGamePiece enemyPiece =
+            board.getCell( row, col ).getPieceOnSquare() == null
+                ? null
+                : board.getCell( row, col ).getPieceOnSquare();
+        if ( enemyPiece == null
+            || this.getColorOfPiece() == PieceColorEnum.UNASSIGNED
+            || enemyPiece.getColorOfPiece() == PieceColorEnum.UNASSIGNED ){
+            return false;
+        }
+        if ( this.getColorOfPiece() == PieceColorEnum.WHITE ){
+            return ( enemyPiece.getColorOfPiece() == PieceColorEnum.BLACK );
+        }
+        else
+        {
+            return ( enemyPiece.getColorOfPiece() == PieceColorEnum.WHITE );
+        }
+    }
+
+    public boolean isPieceOnScreen(){
+        return isOnScreen( pieceRow, pieceColumn );
     }
 }
