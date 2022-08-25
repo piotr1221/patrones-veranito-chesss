@@ -1,4 +1,4 @@
-package org;
+package org.game.chess;
 
 import java.awt.Component;
 import java.awt.event.*;

@@ -1,6 +1,7 @@
-package org;
+package org.game.chess;
 
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
 // -------------------------------------------------------------------------
 /**
@@ -33,15 +34,15 @@ public class Bishop extends ChessGamePiece{
 	 * 
 	 * @param board
 	 *			the game board to calculate moves on
-	 * @return ArrayList<String> the moves
+	 * @return List<String> the moves
 	 */
 	@Override
-	protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
-		ArrayList<String> northEastMoves = calculateNorthEastMoves( board, 8 );
-		ArrayList<String> northWestMoves = calculateNorthWestMoves( board, 8 );
-		ArrayList<String> southEastMoves = calculateSouthEastMoves( board, 8 );
-		ArrayList<String> southWestMoves = calculateSouthWestMoves( board, 8 );
-		ArrayList<String> allMoves = new ArrayList<String>();
+	protected List<String> calculatePossibleMoves(ChessGameBoard board ){
+		List<String> northEastMoves = calculateNorthEastMoves( board, 8 );
+		List<String> northWestMoves = calculateNorthWestMoves( board, 8 );
+		List<String> southEastMoves = calculateSouthEastMoves( board, 8 );
+		List<String> southWestMoves = calculateSouthWestMoves( board, 8 );
+		List<String> allMoves = new ArrayList<>();
 		allMoves.addAll( northEastMoves );
 		allMoves.addAll( northWestMoves );
 		allMoves.addAll( southEastMoves );
@@ -57,17 +58,17 @@ public class Bishop extends ChessGamePiece{
 	public ImageIcon createImageByPieceType(){
 		if ( getColorOfPiece() == ChessGamePiece.WHITE ){
 			return new ImageIcon(
-				getClass().getResource("chessImages/WhiteBishop.gif")
+				getClass().getResource("/chessImages/WhiteBishop.gif")
 			);			
 		}
 		else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
 			return new ImageIcon(
-				getClass().getResource("chessImages/BlackBishop.gif")
+				getClass().getResource("/chessImages/BlackBishop.gif")
 			);
 		}
 		else{
 			return new ImageIcon(
-				getClass().getResource("chessImages/BlackBishop.gif")
+				getClass().getResource("/chessImages/BlackBishop.gif")
 			);
 		}
 	}

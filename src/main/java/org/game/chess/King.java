@@ -1,5 +1,6 @@
-package org;
+package org.game.chess;
 
+import java.util.List;
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
 // -------------------------------------------------------------------------
@@ -35,19 +36,19 @@ public class King
      *
      * @param board
      *            the game board to calculate moves on
-     * @return ArrayList<String> the moves
+     * @return List<String> the moves
      */
     @Override
-    protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
-        ArrayList<String> northEastMoves = calculateNorthEastMoves( board, 1 );
-        ArrayList<String> northWestMoves = calculateNorthWestMoves( board, 1 );
-        ArrayList<String> southEastMoves = calculateSouthEastMoves( board, 1 );
-        ArrayList<String> southWestMoves = calculateSouthWestMoves( board, 1 );
-        ArrayList<String> northMoves = calculateNorthMoves( board, 1 );
-        ArrayList<String> southMoves = calculateSouthMoves( board, 1 );
-        ArrayList<String> eastMoves = calculateEastMoves( board, 1 );
-        ArrayList<String> westMoves = calculateWestMoves( board, 1 );
-        ArrayList<String> allMoves = new ArrayList<String>();
+    protected List<String> calculatePossibleMoves( ChessGameBoard board ){
+        List<String> northEastMoves = calculateNorthEastMoves( board, 1 );
+        List<String> northWestMoves = calculateNorthWestMoves( board, 1 );
+        List<String> southEastMoves = calculateSouthEastMoves( board, 1 );
+        List<String> southWestMoves = calculateSouthWestMoves( board, 1 );
+        List<String> northMoves = calculateNorthMoves( board, 1 );
+        List<String> southMoves = calculateSouthMoves( board, 1 );
+        List<String> eastMoves = calculateEastMoves( board, 1 );
+        List<String> westMoves = calculateWestMoves( board, 1 );
+        List<String> allMoves = new ArrayList<>();
         allMoves.addAll( northEastMoves );
         allMoves.addAll( northWestMoves );
         allMoves.addAll( southWestMoves );
@@ -77,18 +78,18 @@ public class King
     public ImageIcon createImageByPieceType(){
         if ( getColorOfPiece() == ChessGamePiece.WHITE ){
             return new ImageIcon(
-                getClass().getResource("chessImages/WhiteKing.gif")
+                getClass().getResource("/chessImages/WhiteKing.gif")
             );            
         }
         else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
             return new ImageIcon(
-                getClass().getResource("chessImages/BlackKing.gif" )
+                getClass().getResource("/chessImages/BlackKing.gif" )
             );            
         }
         else
         {
             return new ImageIcon(
-                getClass().getResource("chessImages/default-Unassigned.gif" )
+                getClass().getResource("/chessImages/default-Unassigned.gif" )
             );            
         }
     }

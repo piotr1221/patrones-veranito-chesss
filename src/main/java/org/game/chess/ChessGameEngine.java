@@ -1,7 +1,8 @@
-package org;
+package org.game.chess;
 
 import java.util.ArrayList;
 import java.awt.Color;
+import java.util.List;
 import javax.swing.JOptionPane;
 import java.awt.event.MouseEvent;
 // -------------------------------------------------------------------------
@@ -85,7 +86,7 @@ public class ChessGameEngine{
      * @return boolean true if the player does have legal moves, false otherwise
      */
     public boolean playerHasLegalMoves( int playerNum ){
-        ArrayList<ChessGamePiece> pieces;
+        List<ChessGamePiece> pieces;
         if ( playerNum == 1 ){
             pieces = board.getAllWhitePieces();
         }

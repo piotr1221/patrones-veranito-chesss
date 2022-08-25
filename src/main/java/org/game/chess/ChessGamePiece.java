@@ -1,7 +1,8 @@
-package org;
+package org.game.chess;
 
 import java.awt.Color;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
 // -------------------------------------------------------------------------
 /**
@@ -23,7 +24,7 @@ public abstract class ChessGamePiece{
      * The list of possible moves for this piece. Updated when actions involving
      * this piece occur. (created, moved, selected, etc)
      */
-    protected ArrayList<String> possibleMoves;
+    protected List<String> possibleMoves;
     /**
      * The game piece's row.
      */
@@ -116,9 +117,9 @@ public abstract class ChessGamePiece{
      *
      * @param board
      *            the board to check moves on
-     * @return ArrayList<String> the list of moves
+     * @return List<String> the list of moves
      */
-    protected abstract ArrayList<String> calculatePossibleMoves(
+    protected abstract List<String> calculatePossibleMoves(
         ChessGameBoard board );
     /**
      * Calculates and returns moves in the south direction relative to this
@@ -128,12 +129,12 @@ public abstract class ChessGamePiece{
      *            the board to calculate the moves on
      * @param numMoves
      *            the number of moves to calculate
-     * @return ArrayList<String> the calculated moves.
+     * @return List<String> the calculated moves.
      */
-    protected ArrayList<String> calculateSouthMoves(
+    protected List<String> calculateSouthMoves(
         ChessGameBoard board,
         int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        List<String> moves = new ArrayList<>();
         int count = 0;
         if ( isPieceOnScreen() ){
             for ( int i = pieceRow + 1; i < 8 && count < numMoves; i++ ){
@@ -162,12 +163,12 @@ public abstract class ChessGamePiece{
      *            the board to calculate the moves on
      * @param numMoves
      *            the number of moves to calculate
-     * @return ArrayList<String> the moves in this direction
+     * @return List<String> the moves in this direction
      */
-    protected ArrayList<String> calculateNorthMoves(
+    protected List<String> calculateNorthMoves(
         ChessGameBoard board,
         int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        List<String> moves = new ArrayList<>();
         int count = 0;
         if ( isPieceOnScreen() ){
             for ( int i = pieceRow - 1; i >= 0 && count < numMoves; i-- ){
@@ -196,12 +197,12 @@ public abstract class ChessGamePiece{
      *            the board to calculate the moves on
      * @param numMoves
      *            the number of moves to calculate
-     * @return ArrayList<String> the moves in this direction
+     * @return List<String> the moves in this direction
      */
-    protected ArrayList<String> calculateEastMoves(
+    protected List<String> calculateEastMoves(
         ChessGameBoard board,
         int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        List<String> moves = new ArrayList<>();
         int count = 0;
         if ( isPieceOnScreen() ){
             for ( int i = pieceColumn + 1; i < 8 && count < numMoves; i++ ){
@@ -230,12 +231,12 @@ public abstract class ChessGamePiece{
      *            the board to calculate the moves on
      * @param numMoves
      *            the number of moves to calculate
-     * @return ArrayList<String> the moves in this direction
+     * @return List<String> the moves in this direction
      */
-    protected ArrayList<String> calculateWestMoves(
+    protected List<String> calculateWestMoves(
         ChessGameBoard board,
         int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        List<String> moves = new ArrayList<>();
         int count = 0;
         if ( isPieceOnScreen() ){
             for ( int i = pieceColumn - 1; i >= 0 && count < numMoves; i-- ){
@@ -264,12 +265,12 @@ public abstract class ChessGamePiece{
      *            the board to calculate the moves on
      * @param numMoves
      *            the number of moves to calculate
-     * @return ArrayList<String> the moves in this direction
+     * @return List<String> the moves in this direction
      */
-    protected ArrayList<String> calculateNorthWestMoves(
+    protected List<String> calculateNorthWestMoves(
         ChessGameBoard board,
         int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        List<String> moves = new ArrayList<>();
         int count = 0;
         if ( isPieceOnScreen() ){
             for ( int i = 1; i < 8 && count < numMoves; i++ ){
@@ -301,12 +302,12 @@ public abstract class ChessGamePiece{
      *            the board to calculate the moves on
      * @param numMoves
      *            the number of moves to calculate
-     * @return ArrayList<String> the moves in this direction
+     * @return List<String> the moves in this direction
      */
-    protected ArrayList<String> calculateNorthEastMoves(
+    protected List<String> calculateNorthEastMoves(
         ChessGameBoard board,
         int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        List<String> moves = new ArrayList<>();
         int count = 0;
         if ( isPieceOnScreen() ){
             for ( int i = 1; i < 8 && count < numMoves; i++ ){
@@ -338,12 +339,12 @@ public abstract class ChessGamePiece{
      *            the board to calculate the moves on
      * @param numMoves
      *            the number of moves to calculate
-     * @return ArrayList<String> the moves in this direction
+     * @return List<String> the moves in this direction
      */
-    protected ArrayList<String> calculateSouthWestMoves(
+    protected List<String> calculateSouthWestMoves(
         ChessGameBoard board,
         int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        List<String> moves = new ArrayList<>();
         int count = 0;
         if ( isPieceOnScreen() ){
             for ( int i = 1; i < 8 && count < numMoves; i++ ){
@@ -375,12 +376,12 @@ public abstract class ChessGamePiece{
      *            the board to calculate the moves on
      * @param numMoves
      *            the number of moves to calculate
-     * @return ArrayList<String> the moves in this direction
+     * @return List<String> the moves in this direction
      */
-    protected ArrayList<String> calculateSouthEastMoves(
+    protected List<String> calculateSouthEastMoves(
         ChessGameBoard board,
         int numMoves ){
-        ArrayList<String> moves = new ArrayList<String>();
+        List<String> moves = new ArrayList<>();
         int count = 0;
         if ( isPieceOnScreen() ){
             for ( int i = 1; i < 8 && count < numMoves; i++ ){
@@ -702,10 +703,10 @@ public abstract class ChessGamePiece{
      * Gets a list of GamePieces that can currently attack this game piece.
      *
      * @param board the game board to check on
-     * @return ArrayList<GamePiece> the list of attackers
+     * @return List<GamePiece> the list of attackers
      */
-    public ArrayList<ChessGamePiece> getCurrentAttackers( ChessGameBoard board ){
-        ArrayList<ChessGamePiece> attackers = new ArrayList<ChessGamePiece>();
+    public List<ChessGamePiece> getCurrentAttackers( ChessGameBoard board ){
+        List<ChessGamePiece> attackers = new ArrayList<>();
         int enemyColor =
             ( this.getColorOfPiece() == ChessGamePiece.BLACK )
                 ? ChessGamePiece.WHITE

@@ -1,5 +1,6 @@
-package org;
+package org.game.chess;
 
+import java.util.List;
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
 // -------------------------------------------------------------------------
@@ -68,11 +69,11 @@ public class Pawn
      *
      * @param board
      *            the game board to calculate moves on
-     * @return ArrayList<String> the moves
+     * @return List<String> the moves
      */
     @Override
-    protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
-        ArrayList<String> moves = new ArrayList<String>();
+    protected List<String> calculatePossibleMoves(ChessGameBoard board ){
+        List<String> moves = new ArrayList<>();
         if ( isPieceOnScreen() ){
             int currRow =
                 getColorOfPiece() == ChessGamePiece.WHITE
@@ -128,18 +129,18 @@ public class Pawn
     public ImageIcon createImageByPieceType(){
         if ( getColorOfPiece() == ChessGamePiece.WHITE ){
             return new ImageIcon(
-                getClass().getResource("chessImages/WhitePawn.gif")
+                getClass().getResource("/chessImages/WhitePawn.gif")
             );            
         }
         else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
             return new ImageIcon(
-                getClass().getResource("chessImages/BlackPawn.gif")
+                getClass().getResource("/chessImages/BlackPawn.gif")
             );            
         }
         else
         {
             return new ImageIcon(
-                getClass().getResource("chessImages/default-Unassigned.gif")
+                getClass().getResource("/chessImages/default-Unassigned.gif")
             );           
         }
     }

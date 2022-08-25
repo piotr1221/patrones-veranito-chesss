@@ -1,5 +1,6 @@
-package org;
+package org.game.chess;
 
+import java.util.List;
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,20 +35,20 @@ public class Rook extends ChessGamePiece{
 	/**
 	 * Calculates the possible moves for this game.Rook.
 	 * @param board the board to check on
-	 * @return ArrayList<String> the list of moves
+	 * @return List<String> the list of moves
 	 */
 	@Override
-	protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
-			ArrayList<String> northMoves = calculateNorthMoves( board, 8 );
-			ArrayList<String> southMoves = calculateSouthMoves( board, 8 );
-			ArrayList<String> westMoves = calculateWestMoves( board, 8 );
-			ArrayList<String> eastMoves = calculateEastMoves( board, 8 );
-			ArrayList<String> allMoves = new ArrayList<String>();
-			allMoves.addAll( northMoves );
-			allMoves.addAll( southMoves );
-			allMoves.addAll( westMoves );
-			allMoves.addAll( eastMoves );
-			return allMoves;
+	protected List<String> calculatePossibleMoves( ChessGameBoard board ){
+		List<String> northMoves = calculateNorthMoves( board, 8 );
+		List<String> southMoves = calculateSouthMoves( board, 8 );
+		List<String> westMoves = calculateWestMoves( board, 8 );
+		List<String> eastMoves = calculateEastMoves( board, 8 );
+		List<String> allMoves = new ArrayList<>();
+		allMoves.addAll( northMoves );
+		allMoves.addAll( southMoves );
+		allMoves.addAll( westMoves );
+		allMoves.addAll( eastMoves );
+		return allMoves;
 	}
 	/**
 	 * Creates an icon for this piece depending on the piece's color.
@@ -58,10 +59,10 @@ public class Rook extends ChessGamePiece{
 	public ImageIcon createImageByPieceType() {
 		icons_map = new HashMap<Integer, String>();
 
-		icons_map.put(-1, "../resources/chessImages/default-Unassigned.gif");
-		icons_map.put(ChessGamePiece.BLACK, "../resources/chessImages/BlackRook.gif");
-		icons_map.put(ChessGamePiece.WHITE, "../resources/chessImages/WhiteRook.gif");
-		
+		icons_map.put(-1, "/chessImages/default-Unassigned.gif");
+		icons_map.put(ChessGamePiece.BLACK, "/chessImages/BlackRook.gif");
+		icons_map.put(ChessGamePiece.WHITE, "/chessImages/WhiteRook.gif");
+
 		return new ImageIcon(getClass().getResource(this.icons_map.get(getColorOfPiece())));
 	}
 }

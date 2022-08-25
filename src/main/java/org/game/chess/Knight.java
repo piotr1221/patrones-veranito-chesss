@@ -1,5 +1,6 @@
-package org;
+package org.game.chess;
 
+import java.util.List;
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
 // -------------------------------------------------------------------------
@@ -34,10 +35,10 @@ public class Knight
      *
      * @param board
      *            the board to check moves on
-     * @return ArrayList<String> a list of the possible moves
+     * @return List<String> a list of the possible moves
      */
-    private ArrayList<String> calculateNorthMoves( ChessGameBoard board ){
-        ArrayList<String> moves = new ArrayList<String>();
+    private List<String> calculateNorthMoves( ChessGameBoard board ){
+        List<String> moves = new ArrayList<>();
         for ( int i = 2; i >= -2; i -= 4 ){
             for ( int j = 1; j >= -1; j -= 2 ){
                 if ( isOnScreen( pieceRow + i, pieceColumn + j )
@@ -58,10 +59,10 @@ public class Knight
      *
      * @param board
      *            the board to check moves on
-     * @return ArrayList<String> a list of the possible moves
+     * @return List<String> a list of the possible moves
      */
-    private ArrayList<String> calculateSouthMoves( ChessGameBoard board ){
-        ArrayList<String> moves = new ArrayList<String>();
+    private List<String> calculateSouthMoves( ChessGameBoard board ){
+        List<String> moves = new ArrayList<>();
         for ( int i = 1; i >= -1; i -= 2 ){
             for ( int j = 2; j >= -2; j -= 4 ){
                 if ( isOnScreen( pieceRow + i, pieceColumn + j )
@@ -81,11 +82,11 @@ public class Knight
      *
      * @param board
      *            the game board to check
-     * @return ArrayList<String> the list of possible moves
+     * @return List<String> the list of possible moves
      */
     @Override
-    protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
-        ArrayList<String> moves = new ArrayList<String>();
+    protected List<String> calculatePossibleMoves( ChessGameBoard board ){
+        List<String> moves = new ArrayList<>();
         if ( isPieceOnScreen() ){
             moves.addAll( calculateNorthMoves( board ) );
             moves.addAll( calculateSouthMoves( board ) );
@@ -101,18 +102,18 @@ public class Knight
     public ImageIcon createImageByPieceType(){
         if ( getColorOfPiece() == ChessGamePiece.WHITE ){
             return new ImageIcon(
-                getClass().getResource("chessImages/WhiteKnight.gif")
+                getClass().getResource("/chessImages/WhiteKnight.gif")
             );            
         }
         else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
             return new ImageIcon(
-                getClass().getResource("chessImages/BlackKnight.gif")
+                getClass().getResource("/chessImages/BlackKnight.gif")
             );            
         }
         else
         {
             return new ImageIcon(
-                getClass().getResource("chessImages/default-Unassigned.gif")
+                getClass().getResource("/chessImages/default-Unassigned.gif")
             );            
         }
     }

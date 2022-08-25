@@ -1,4 +1,4 @@
-package org;
+package org.game.chess;
 
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
