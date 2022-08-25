@@ -2,7 +2,7 @@ package org.game.chess;
 
 import java.util.List;
 import javax.swing.ImageIcon;
-import java.util.ArrayList;
+import org.game.chess.enums.PieceColorEnum;
 // -------------------------------------------------------------------------
 /**
  * Represents a game.Queen game piece.
@@ -27,7 +27,7 @@ public class Queen
      * @param color
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
-    public Queen( ChessGameBoard board, int row, int col, int color ){
+    public Queen(ChessGameBoard board, int row, int col, PieceColorEnum color ){
         super( board, row, col, color );
     }
     /**
@@ -46,12 +46,12 @@ public class Queen
      */
     @Override
     public ImageIcon createImageByPieceType(){
-        if ( getColorOfPiece() == ChessGamePiece.WHITE ){
+        if ( getColorOfPiece() == PieceColorEnum.WHITE ){
             return new ImageIcon(
                 getClass().getResource("/chessImages/WhiteQueen.gif")
             );            
         }
-        else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
+        else if ( getColorOfPiece() == PieceColorEnum.BLACK ){
             return new ImageIcon(
                 getClass().getResource("/chessImages/BlackQueen.gif")
             );            

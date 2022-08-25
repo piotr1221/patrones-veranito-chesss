@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ImageIcon;
+import org.game.chess.enums.PieceColorEnum;
 // -------------------------------------------------------------------------
 /**
  * Abstract class that is used to represent a game piece on the chess board.
@@ -19,7 +20,7 @@ import javax.swing.ImageIcon;
  */
 public abstract class ChessGamePiece implements Serializable {
     private boolean             skipMoveGeneration;
-    private int                 pieceColor;
+    private PieceColorEnum      pieceColor;
     private ImageIcon           pieceImage;
     /**
      * The list of possible moves for this piece. Updated when actions involving
@@ -35,17 +36,7 @@ public abstract class ChessGamePiece implements Serializable {
      */
     protected int               pieceColumn;
     /**
-     * Represents a black piece as an int
-     */
-    static final int            BLACK      = 0;
-    /**
-     * Represents a white piece as an int
-     */
-    static final int            WHITE      = 1;
-    /**
-     * Represents a piece that has not been assigned a color
-     */
-    static final int            UNASSIGNED = -1;
+
     // ----------------------------------------------------------
     /**
      * Create a new GamePiece object.
@@ -63,7 +54,7 @@ public abstract class ChessGamePiece implements Serializable {
         ChessGameBoard board,
         int row,
         int col,
-        int pieceColor ){
+        PieceColorEnum pieceColor ){
         skipMoveGeneration = false;
         this.pieceColor = pieceColor;
         pieceImage = createImageByPieceType();
@@ -95,7 +86,7 @@ public abstract class ChessGamePiece implements Serializable {
         ChessGameBoard board,
         int row,
         int col,
-        int pieceColor,
+        PieceColorEnum pieceColor,
         boolean skipMoveGeneration ){
         this.skipMoveGeneration = skipMoveGeneration;
         this.pieceColor = pieceColor;
@@ -427,7 +418,7 @@ public abstract class ChessGamePiece implements Serializable {
      * @return int 0 for a black piece, 1 for a white piece, -1 for an
      *         unassigned piece.
      */
-    public int getColorOfPiece(){
+    public PieceColorEnum getColorOfPiece(){
         return pieceColor;
     }
     // ----------------------------------------------------------
@@ -675,12 +666,12 @@ public abstract class ChessGamePiece implements Serializable {
                 ? null
                 : board.getCell( row, col ).getPieceOnSquare();
         if ( enemyPiece == null
-            || this.getColorOfPiece() == ChessGamePiece.UNASSIGNED
-            || enemyPiece.getColorOfPiece() == ChessGamePiece.UNASSIGNED ){
+            || this.getColorOfPiece() == PieceColorEnum.UNASSIGNED
+            || enemyPiece.getColorOfPiece() == PieceColorEnum.UNASSIGNED ){
             return false;
         }
-        if ( this.getColorOfPiece() == ChessGamePiece.WHITE ){
-            if ( enemyPiece.getColorOfPiece() == ChessGamePiece.BLACK ){
+        if ( this.getColorOfPiece() == PieceColorEnum.WHITE ){
+            if ( enemyPiece.getColorOfPiece() == PieceColorEnum.BLACK ){
                 return true;
             }
             else
@@ -690,7 +681,7 @@ public abstract class ChessGamePiece implements Serializable {
         }
         else
         {
-            if ( enemyPiece.getColorOfPiece() == ChessGamePiece.WHITE ){
+            if ( enemyPiece.getColorOfPiece() == PieceColorEnum.WHITE ){
                 return true;
             }
             else
@@ -708,10 +699,10 @@ public abstract class ChessGamePiece implements Serializable {
      */
     public List<ChessGamePiece> getCurrentAttackers( ChessGameBoard board ){
         List<ChessGamePiece> attackers = new ArrayList<>();
-        int enemyColor =
-            ( this.getColorOfPiece() == ChessGamePiece.BLACK )
-                ? ChessGamePiece.WHITE
-                : ChessGamePiece.BLACK;
+        PieceColorEnum enemyColor =
+            ( this.getColorOfPiece() == PieceColorEnum.BLACK )
+                ? PieceColorEnum.WHITE
+                : PieceColorEnum.BLACK;
         this.updatePossibleMoves( board );
         for ( int i = 0; i < board.getCells().length; i++ ){
             for ( int j = 0; j < board.getCells()[0].length; j++ ){

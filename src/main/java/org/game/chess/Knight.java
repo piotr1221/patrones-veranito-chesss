@@ -3,6 +3,7 @@ package org.game.chess;
 import java.util.List;
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
+import org.game.chess.enums.PieceColorEnum;
 // -------------------------------------------------------------------------
 /**
  * Represents a game.Knight game piece.
@@ -26,7 +27,7 @@ public class Knight
      * @param color
      *            either GamePiece.WHITE, BLACK, or UNASSIGNED
      */
-    public Knight( ChessGameBoard board, int row, int col, int color ){
+    public Knight(ChessGameBoard board, int row, int col, PieceColorEnum color ){
         super( board, row, col, color );
     }
     /**
@@ -100,12 +101,12 @@ public class Knight
      */
     @Override
     public ImageIcon createImageByPieceType(){
-        if ( getColorOfPiece() == ChessGamePiece.WHITE ){
+        if ( getColorOfPiece() == PieceColorEnum.WHITE ){
             return new ImageIcon(
                 getClass().getResource("/chessImages/WhiteKnight.gif")
             );            
         }
-        else if ( getColorOfPiece() == ChessGamePiece.BLACK ){
+        else if ( getColorOfPiece() == PieceColorEnum.BLACK ){
             return new ImageIcon(
                 getClass().getResource("/chessImages/BlackKnight.gif")
             );            

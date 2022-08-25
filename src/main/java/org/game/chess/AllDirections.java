@@ -2,14 +2,15 @@ package org.game.chess;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.game.chess.enums.PieceColorEnum;
 
 public abstract class AllDirections extends ChessGamePiece{
 
-    protected AllDirections(ChessGameBoard board, int row, int col, int pieceColor) {
+    protected AllDirections(ChessGameBoard board, int row, int col, PieceColorEnum pieceColor) {
         super(board, row, col, pieceColor);
     }
 
-    public AllDirections(ChessGameBoard board, int row, int col, int pieceColor,
+    public AllDirections(ChessGameBoard board, int row, int col, PieceColorEnum pieceColor,
                          boolean skipMoveGeneration) {
         super(board, row, col, pieceColor, skipMoveGeneration);
     }

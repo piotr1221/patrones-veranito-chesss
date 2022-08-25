@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.List;
 import javax.swing.JOptionPane;
 import java.awt.event.MouseEvent;
+import org.game.chess.enums.PieceColorEnum;
 // -------------------------------------------------------------------------
 /**
  * This is the backend behind the Chess game. Handles the turn-based aspects of
@@ -115,12 +116,12 @@ public class ChessGameEngine{
         }
         if ( currentPlayer == 2 ) // black player
         {
-            return currentPiece.getColorOfPiece() == ChessGamePiece.BLACK;
+            return currentPiece.getColorOfPiece() == PieceColorEnum.BLACK;
         }
         else
         // white player
         {
-            return currentPiece.getColorOfPiece() == ChessGamePiece.WHITE;
+            return currentPiece.getColorOfPiece() == PieceColorEnum.WHITE;
         }
     }
     /**

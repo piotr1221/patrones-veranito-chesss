@@ -5,6 +5,7 @@ import javax.swing.ImageIcon;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import org.game.chess.enums.PieceColorEnum;
 // -------------------------------------------------------------------------
 /**
  * Represents a game.Rook game piece.
@@ -15,7 +16,7 @@ import java.util.Map;
  * @version 2010.11.17
  */
 public class Rook extends ChessGamePiece{
-	protected Map<Integer, String> icons_map;
+	protected Map<PieceColorEnum, String> icons_map;
 	// ----------------------------------------------------------
 	/**
 	 * Create a new game.Rook object.
@@ -29,7 +30,7 @@ public class Rook extends ChessGamePiece{
 	 * @param color
 	 *            either GamePiece.WHITE, BLACK, or UNASSIGNED
 	 */
-	public Rook( ChessGameBoard board, int row, int col, int color ){
+	public Rook(ChessGameBoard board, int row, int col, PieceColorEnum color ){
 		super( board, row, col, color );
 	}
 	/**
@@ -57,11 +58,11 @@ public class Rook extends ChessGamePiece{
 	 */
 	@Override
 	public ImageIcon createImageByPieceType() {
-		icons_map = new HashMap<Integer, String>();
+		icons_map = new HashMap<PieceColorEnum, String>();
 
-		icons_map.put(-1, "/chessImages/default-Unassigned.gif");
-		icons_map.put(ChessGamePiece.BLACK, "/chessImages/BlackRook.gif");
-		icons_map.put(ChessGamePiece.WHITE, "/chessImages/WhiteRook.gif");
+		icons_map.put(PieceColorEnum.UNASSIGNED, "/chessImages/default-Unassigned.gif");
+		icons_map.put(PieceColorEnum.BLACK, "/chessImages/BlackRook.gif");
+		icons_map.put(PieceColorEnum.WHITE, "/chessImages/WhiteRook.gif");
 
 		return new ImageIcon(getClass().getResource(this.icons_map.get(getColorOfPiece())));
 	}
