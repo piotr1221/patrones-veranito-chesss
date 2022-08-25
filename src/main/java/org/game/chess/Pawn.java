@@ -1,6 +1,7 @@
 package org.game.chess;
 
 import java.util.List;
+import java.util.function.IntUnaryOperator;
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
 import org.game.chess.enums.PieceColorEnum;
@@ -73,50 +74,34 @@ public class Pawn
      * @return List<String> the moves
      */
     @Override
-    protected List<String> calculatePossibleMoves(ChessGameBoard board ){
-        List<String> moves = new ArrayList<>();
+    protected ArrayList<String> calculatePossibleMoves( ChessGameBoard board ){
+        IntUnaryOperator navOp = PieceColorEnum.WHITE == this.getColorOfPiece() ?
+            x -> x -1 : x -> x+1;
+
+        ArrayList<String> moves = new ArrayList<>();
         if ( isPieceOnScreen() ){
-            int currRow =
-                getColorOfPiece() == PieceColorEnum.WHITE
-                    ? ( pieceRow - 1 )
-                    : ( pieceRow + 1 );
+            int currRow = navOp.applyAsInt(pieceRow);
             int count = 1;
-            int maxIter = notMoved ? 2 : 1;
+            int maxIter =  Boolean.compare(notMoved, true) + 2;
             // check for normal moves
             while ( count <= maxIter ){ // only loop while we have open slots and have not passed our
-              // limit
-                if ( isOnScreen( currRow, pieceColumn )
-                    && board.getCell( currRow,
-                        pieceColumn ).getPieceOnSquare() == null ){
+                // limit
+                if ( isOnScreen( currRow, pieceColumn ) && board.getCell( currRow, pieceColumn ).getPieceOnSquare() == null ){
                     moves.add( currRow + "," + pieceColumn );
                 }
                 else
                 {
                     break;
                 }
-                currRow =
-                    ( getColorOfPiece() == PieceColorEnum.WHITE )
-                        ? ( currRow - 1 )
-                        : ( currRow + 1 );
+                currRow = navOp.applyAsInt(currRow);
                 count++;
             }
-            // check for enemy capture points
-            if ( getColorOfPiece() == PieceColorEnum.WHITE ){
-                if ( isEnemy( board, pieceRow - 1, pieceColumn - 1 ) ){
-                    moves.add( ( pieceRow - 1 ) + "," + ( pieceColumn - 1 ) );
-                }
-                if ( isEnemy( board, pieceRow - 1, pieceColumn + 1 ) ){
-                    moves.add( ( pieceRow - 1 ) + "," + ( pieceColumn + 1 ) );
-                }
+
+            if ( isEnemy( board, navOp.applyAsInt(pieceRow), pieceColumn - 1 ) ){
+                moves.add( ( navOp.applyAsInt(pieceRow) ) + "," + ( pieceColumn - 1 ) );
             }
-            else
-            {
-                if ( isEnemy( board, pieceRow + 1, pieceColumn - 1 ) ){
-                    moves.add( ( pieceRow + 1 ) + "," + ( pieceColumn - 1 ) );
-                }
-                if ( isEnemy( board, pieceRow + 1, pieceColumn + 1 ) ){
-                    moves.add( ( pieceRow + 1 ) + "," + ( pieceColumn + 1 ) );
-                }
+            if ( isEnemy( board, navOp.applyAsInt(pieceRow), pieceColumn + 1 ) ){
+                moves.add( ( navOp.applyAsInt(pieceRow) ) + "," + ( pieceColumn + 1 ) );
             }
         }
         return moves;

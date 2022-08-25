@@ -26,7 +26,7 @@ public abstract class ChessGamePiece implements Serializable {
      * The list of possible moves for this piece. Updated when actions involving
      * this piece occur. (created, moved, selected, etc)
      */
-    private List<String> possibleMoves;
+    protected List<String> possibleMoves;
     /**
      * The game piece's row.
      */
@@ -433,13 +433,7 @@ public abstract class ChessGamePiece implements Serializable {
      * @return boolean true if the location is valid, false if not
      */
     public boolean isOnScreen( int row, int col ){
-        if ( row >= 0 && row <= 7 && col >= 0 && col <= 7 ){
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+        return ( row >= 0 && row <= 7 && col >= 0 && col <= 7 );
     }
     // ----------------------------------------------------------
 

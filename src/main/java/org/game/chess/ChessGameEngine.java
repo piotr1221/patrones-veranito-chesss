@@ -1,6 +1,7 @@
 package org.game.chess;
 
 import java.awt.Color;
+import java.io.Serializable;
 import java.util.List;
 import javax.swing.JOptionPane;
 import java.awt.event.MouseEvent;
@@ -15,7 +16,7 @@ import org.game.chess.enums.PieceColorEnum;
  * @author Danielle Bushrow (dbushrow)
  * @version 2010.11.17
  */
-public class ChessGameEngine{
+public class ChessGameEngine implements Serializable {
     private ChessGamePiece currentPiece;
     private boolean        firstClick;
     private int            currentPlayer;
