@@ -1,8 +1,10 @@
+package org;
+
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 // -------------------------------------------------------------------------
 /**
- * Class to represent the Bishop piece.
+ * Class to represent the game.Bishop piece.
  * 
  * @author Ben Katz (bakatz)
  * @author Myles David II (davidmm2)
@@ -11,14 +13,14 @@ import javax.swing.ImageIcon;
  */
 public class Bishop extends ChessGamePiece{
 	/**
-	 * Creates a new Bishop object.
+	 * Creates a new game.Bishop object.
 	 * 
 	 * @param board
 	 *			board the board to create the bishop on
 	 * @param row
-	 *			row location of the Bishop
+	 *			row location of the game.Bishop
 	 * @param col
-	 *			col location of the Bishop
+	 *			col location of the game.Bishop
 	 * @param color
 	 *			either GamePiece.WHITE, BLACK, or UNASSIGNED
 	 */

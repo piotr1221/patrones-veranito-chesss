@@ -1,8 +1,10 @@
+package org;
+
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
 // -------------------------------------------------------------------------
 /**
- * Represents a King game piece.
+ * Represents a game.King game piece.
  *
  * @author Ben Katz (bakatz)
  * @author Myles David II (davidmm2)
@@ -13,7 +15,7 @@ public class King
     extends ChessGamePiece{
     // ----------------------------------------------------------
     /**
-     * Create a new King object.
+     * Create a new game.King object.
      *
      * @param board
      *            the board to create the king on
@@ -57,7 +59,7 @@ public class King
         return allMoves;
     }
     /**
-     * Determines if this King is checked.
+     * Determines if this game.King is checked.
      *
      * @param board
      *            the board to check on

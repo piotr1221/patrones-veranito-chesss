@@ -1,8 +1,10 @@
+package org;
+
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
 // -------------------------------------------------------------------------
 /**
- * Represents a Pawn game piece. Unique in that it can move two locations on its
+ * Represents a game.Pawn game piece. Unique in that it can move two locations on its
  * first turn and therefore requires a new 'notMoved' variable to keep track of
  * its turns.
  *
@@ -16,7 +18,7 @@ public class Pawn
     private boolean notMoved;
     // ----------------------------------------------------------
     /**
-     * Create a new Pawn object.
+     * Create a new game.Pawn object.
      *
      * @param board
      *            the board to create the pawn on

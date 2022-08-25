@@ -1,8 +1,10 @@
+package org;
+
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
 // -------------------------------------------------------------------------
 /**
- * Represents a Knight game piece.
+ * Represents a game.Knight game piece.
  *
  * @author Ben Katz (bakatz)
  * @author Myles David II (davidmm2)
@@ -12,7 +14,7 @@ import java.util.ArrayList;
 public class Knight
     extends ChessGamePiece{
     /**
-     * Knight constructor for gamePiece
+     * game.Knight constructor for gamePiece
      *
      * @param row
      *            the row to create the knight on
@@ -75,7 +77,7 @@ public class Knight
         return moves;
     }
     /**
-     * Calculates the possible moves for this Knight.
+     * Calculates the possible moves for this game.Knight.
      *
      * @param board
      *            the game board to check

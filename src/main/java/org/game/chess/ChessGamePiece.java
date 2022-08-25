@@ -1,10 +1,12 @@
+package org;
+
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 // -------------------------------------------------------------------------
 /**
  * Abstract class that is used to represent a game piece on the chess board.
- * Classes to extend this piece are Rook, Bishop, Knight, Queen, King and Pawn.
+ * Classes to extend this piece are game.Rook, game.Bishop, game.Knight, game.Queen, game.King and game.Pawn.
  * Also contains a large number of methods to determine information about cells
  * around this piece.
  *
@@ -521,7 +523,7 @@ public abstract class ChessGamePiece{
     }
     /**
      * Checks if the move that is about to be made would cause the current
-     * player's King to be put in check (which is an illegal move).
+     * player's game.King to be put in check (which is an illegal move).
      *
      * @param board
      *            the game board to check on
@@ -651,7 +653,7 @@ public abstract class ChessGamePiece{
     // ----------------------------------------------------------
     /**
      * Determines if the row and column contains an enemy piece. This is defined
-     * in GamePiece and not ChessGameBoard because different pieces have
+     * in GamePiece and not game.ChessGameBoard because different pieces have
      * different enemies depending on their colors.
      *
      * @param row
