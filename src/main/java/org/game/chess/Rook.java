@@ -4,8 +4,6 @@ import java.util.EnumMap;
 import java.util.List;
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import org.game.chess.enums.PieceColorEnum;
 // -------------------------------------------------------------------------
 /**

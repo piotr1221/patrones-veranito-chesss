@@ -1,6 +1,5 @@
 package org.game.chess;
 
-import java.util.List;
 import java.util.function.IntUnaryOperator;
 import javax.swing.ImageIcon;
 import java.util.ArrayList;
