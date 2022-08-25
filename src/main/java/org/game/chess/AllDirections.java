@@ -10,7 +10,7 @@ public abstract class AllDirections extends ChessGamePiece{
         super(board, row, col, pieceColor);
     }
 
-    public AllDirections(ChessGameBoard board, int row, int col, PieceColorEnum pieceColor,
+    protected AllDirections(ChessGameBoard board, int row, int col, PieceColorEnum pieceColor,
                          boolean skipMoveGeneration) {
         super(board, row, col, pieceColor, skipMoveGeneration);
     }
