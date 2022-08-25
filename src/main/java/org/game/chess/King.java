@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @version 2010.11.17
  */
 public class King
-    extends ChessGamePiece{
+    extends AllDirections {
     // ----------------------------------------------------------
     /**
      * Create a new game.King object.
@@ -38,26 +38,8 @@ public class King
      *            the game board to calculate moves on
      * @return List<String> the moves
      */
-    @Override
     protected List<String> calculatePossibleMoves( ChessGameBoard board ){
-        List<String> northEastMoves = calculateNorthEastMoves( board, 1 );
-        List<String> northWestMoves = calculateNorthWestMoves( board, 1 );
-        List<String> southEastMoves = calculateSouthEastMoves( board, 1 );
-        List<String> southWestMoves = calculateSouthWestMoves( board, 1 );
-        List<String> northMoves = calculateNorthMoves( board, 1 );
-        List<String> southMoves = calculateSouthMoves( board, 1 );
-        List<String> eastMoves = calculateEastMoves( board, 1 );
-        List<String> westMoves = calculateWestMoves( board, 1 );
-        List<String> allMoves = new ArrayList<>();
-        allMoves.addAll( northEastMoves );
-        allMoves.addAll( northWestMoves );
-        allMoves.addAll( southWestMoves );
-        allMoves.addAll( southEastMoves );
-        allMoves.addAll( northMoves );
-        allMoves.addAll( southMoves );
-        allMoves.addAll( westMoves );
-        allMoves.addAll( eastMoves );
-        return allMoves;
+        return super.calculatePossibleMoves(board, 1);
     }
     /**
      * Determines if this game.King is checked.

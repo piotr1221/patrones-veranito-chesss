@@ -13,7 +13,7 @@ import java.util.ArrayList;
  * @version 2010.11.17
  */
 public class Queen
-    extends ChessGamePiece{
+    extends AllDirections {
     // ----------------------------------------------------------
     /**
      * Create a new game.Queen object.
@@ -37,24 +37,7 @@ public class Queen
      */
     @Override
     protected List<String> calculatePossibleMoves( ChessGameBoard board ){
-        List<String> northEastMoves = calculateNorthEastMoves( board, 8 );
-        List<String> northWestMoves = calculateNorthWestMoves( board, 8 );
-        List<String> southEastMoves = calculateSouthEastMoves( board, 8 );
-        List<String> southWestMoves = calculateSouthWestMoves( board, 8 );
-        List<String> northMoves = calculateNorthMoves( board, 8 );
-        List<String> southMoves = calculateSouthMoves( board, 8 );
-        List<String> eastMoves = calculateEastMoves( board, 8 );
-        List<String> westMoves = calculateWestMoves( board, 8 );
-        List<String> allMoves = new ArrayList<>();
-        allMoves.addAll( northEastMoves );
-        allMoves.addAll( northWestMoves );
-        allMoves.addAll( southWestMoves );
-        allMoves.addAll( southEastMoves );
-        allMoves.addAll( northMoves );
-        allMoves.addAll( southMoves );
-        allMoves.addAll( westMoves );
-        allMoves.addAll( eastMoves );
-        return allMoves;
+        return super.calculatePossibleMoves(board, 8);
     }
     /**
      * Creates an icon for this piece depending on the piece's color.
