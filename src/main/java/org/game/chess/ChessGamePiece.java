@@ -26,7 +26,7 @@ public abstract class ChessGamePiece implements Serializable {
      * The list of possible moves for this piece. Updated when actions involving
      * this piece occur. (created, moved, selected, etc)
      */
-    protected List<String> possibleMoves;
+    private List<String> possibleMoves;
     /**
      * The game piece's row.
      */
